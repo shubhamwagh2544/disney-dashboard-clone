@@ -40,12 +40,12 @@ export const Header = () => {
             <div className='flex gap-8 items-center'>
                 <img src={logo} className='w-[80px] object-cover lg:w-[100px]' />
                 <div className='hidden lg:flex gap-8'>
-                    {menu.map((item) => <HeaderItem name={item.name} Icon={item.icon} />)}
+                    {menu.map((item, index) => <HeaderItem key={index} name={item.name} Icon={item.icon} />)}
                 </div>
                 <div className='flex gap-8 lg:hidden'>
                     {menu.map((item, index) => {
                         if (index < 3) {
-                            return <HeaderItem name={''} Icon={item.icon} />
+                            return <HeaderItem key={index} name={''} Icon={item.icon} />
                         }
                     })}
                 </div>
@@ -55,7 +55,7 @@ export const Header = () => {
                         toggle ? <div className='absolute mt-3 bg-[#121212] border-[1px] border-gray-500 p-3 px-5 py-5'>
                             {menu.map((item, index) => {
                                 if (index > 2) {
-                                    return <HeaderItem name={item.name} Icon={item.icon} />
+                                    return <HeaderItem key={index} name={item.name} Icon={item.icon} />
                                 }
                             })}
                         </div> : null
