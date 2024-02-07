@@ -7,10 +7,13 @@ import {
     HiPlayCircle,
     HiTv
 } from 'react-icons/hi2'
-import { HiPlus } from 'react-icons/hi'
+import { HiPlus, HiDotsVertical } from 'react-icons/hi'
 import { HeaderItem } from './HeaderItem'
+import { useState } from 'react'
 
 export const Header = () => {
+
+    const [toggle, setToggle] = useState(false)
 
     const menu = [{
         name: 'Home',
@@ -33,12 +36,33 @@ export const Header = () => {
     }]
 
     return (
-        <div className='flex items-center gap-10 justify-between p-3'>
-            <div className='flex gap-10'>
-                <img src={logo} className='w-[80px] object-cover md: w-[100px]' />
-                {menu.map((item) => <HeaderItem name={item.name} Icon={item.icon} />)}
+        <div className='flex items-center gap-8 justify-between p-3'>
+            <div className='flex gap-8 items-center'>
+                <img src={logo} className='w-[80px] object-cover lg:w-[100px]' />
+                <div className='hidden lg:flex gap-8'>
+                    {menu.map((item) => <HeaderItem name={item.name} Icon={item.icon} />)}
+                </div>
+                <div className='flex gap-8 lg:hidden'>
+                    {menu.map((item, index) => {
+                        if (index < 3) {
+                            return <HeaderItem name={''} Icon={item.icon} />
+                        }
+                    })}
+                </div>
+                <div className='lg:hidden' onClick={() => setToggle(!toggle)}>
+                    <HeaderItem name={''} Icon={HiDotsVertical} />
+                    {
+                        toggle ? <div className='absolute mt-3 bg-[#121212] border-[1px] border-gray-500 p-3 px-5 py-5'>
+                            {menu.map((item, index) => {
+                                if (index > 2) {
+                                    return <HeaderItem name={item.name} Icon={item.icon} />
+                                }
+                            })}
+                        </div> : null
+                    }
+                </div>
             </div>
-            <img src={profile} className='w-[80px] object-cover md: w-[50px] h-[50px]' />
+            <img src={profile} className='w-[40px] object-cover md:w-[40px] h-[40px] rounded-full' />
         </div>
     )
 }
