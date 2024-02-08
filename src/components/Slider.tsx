@@ -27,14 +27,14 @@ export const Slider = () => {
 
     return (
         <div>
-            <HiChevronLeft className="hidden md:block text-white text-[35px] absolute mx-8 mt-[175px] cursor-pointer left-0" onClick={() => slideLeft(slideReference.current)} />
-            <HiChevronRight className="hidden md:block text-white text-[35px] absolute mx-8 mt-[175px] cursor-pointer right-0" onClick={() => slideRight(slideReference.current)} />
+            <HiChevronLeft className="hidden md:block text-white text-[35px] absolute mx-8 mt-[200px] cursor-pointer left-2" onClick={() => slideLeft(slideReference.current)} />
+            <HiChevronRight className="hidden md:block text-white text-[35px] absolute mx-8 mt-[200px] cursor-pointer right-0" onClick={() => slideRight(slideReference.current)} />
 
             <div className="flex overflow-x-auto w-full px-16 py-4 scrollbar-hide scroll-smooth" ref={slideReference}>
                 {
                     movies.map((item, index): any => (
                         <img src={IMAGE_BASE_URL + item.backdrop_path} key={index}
-                            className="min-w-full  md:object-cover h-[350px] object-top ml-2 mr-5 rounded-lg hover:border-[2px] border-gray-500 transition-all duration-100 ease-in-out" />
+                            className="min-w-full  md:object-cover h-[400px] object-top ml-2 mr-5 rounded-lg hover:border-[2px] border-gray-500 transition-all duration-100 ease-in-out" />
                     ))
                 }
             </div>
