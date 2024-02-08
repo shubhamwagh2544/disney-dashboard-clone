@@ -8,7 +8,7 @@ const screenWidth = window.innerWidth
 export const Slider = () => {
 
     const [movies, setMovies] = useState([])
-    const slideReference = useRef()
+    const slideReference = useRef(null)
 
     useEffect(() => {
         trendingVideos.then((res): any => {
@@ -32,7 +32,7 @@ export const Slider = () => {
 
             <div className="flex overflow-x-auto w-full px-16 py-4 scrollbar-hide scroll-smooth" ref={slideReference}>
                 {
-                    movies.map((item, index): any => (
+                    movies.map((item: any, index: number): any => (
                         <img src={IMAGE_BASE_URL + item.backdrop_path} key={index}
                             className="min-w-full  md:object-cover h-[400px] object-top ml-2 mr-5 rounded-lg hover:border-[2px] border-gray-500 transition-all duration-100 ease-in-out" />
                     ))
