@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import trendingVideos from "../services/GlobalAPI"
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2'
 
-const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/original/'
+export const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/original/'
 const screenWidth = window.innerWidth
 
 export const Slider = () => {
@@ -34,7 +34,7 @@ export const Slider = () => {
                 {
                     movies.map((item, index): any => (
                         <img src={IMAGE_BASE_URL + item.backdrop_path} key={index}
-                            className="min-w-full  md:object-cover h-[350px] object-top ml-2 mr-5 rounded-lg hover:border-[2px] border-gray-400 transition-all duration-100 ease-in-out" />
+                            className="min-w-full  md:object-cover h-[350px] object-top ml-2 mr-5 rounded-lg hover:border-[2px] border-gray-500 transition-all duration-100 ease-in-out" />
                     ))
                 }
             </div>
